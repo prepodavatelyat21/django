@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2><a href="{% url 'authors:author_list' %}">Автори</a></h2>
+
+<ul>
+    {% for author in object_list %}
+    <li>{{ author.name }}
+    <a href="{% url 'authors:author_edit' author.id %}">редакция</a>
+    <a href="{% url 'authors:author_delete' author.id %}">изтриване</a>
+        <b>Книги:</b> {% for book in author.getBooks %}
+            <span> | {{ book.name }}</span>
+            {% endfor %}
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'authors:author_new' %}">Добави автор</a>
+
+{% endblock %}

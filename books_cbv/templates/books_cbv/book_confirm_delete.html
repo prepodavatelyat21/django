@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2><a href="{% url 'books_cbv:book_list' %}">Книги</a>: Изтриване?</h2>
+
+<form method="post">{% csrf_token %}
+    Сигурни ли сте, че искате да изтриете книгата "{{ object }}" ?<br>
+    <input type="submit" value="Delete" />
+</form>
+
+{% endblock %}
